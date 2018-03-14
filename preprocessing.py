@@ -11,17 +11,7 @@ import shutil
 import pandas as pd
 import numpy as np
 
-from utils import train_path, test_path, label_path, sample_submission_path
+from utils import *
 
-def mk_breed_file():
-    """
-    在Data子目录下创建与类别相同的文件夹，以供后续ImageGenerator使用
-    :return: None
-    """
-    label = pd.read_csv(label_path)
-    category = label['breed'].unique()
-    for file in category:
-        os.makedirs(train_path + '\\' + file)
-    print("Done")
-    return None
-
+# make_breed_file() # 在train中创建狗的不同品种文件夹
+# move_train_data() # 将原始数据的图片按照label.csv中的breed移动到不同的文件夹中

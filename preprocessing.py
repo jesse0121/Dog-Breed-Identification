@@ -8,7 +8,20 @@ time: 2018.3.14
 
 import os
 import shutil
+import pandas as pd
+import numpy as np
+
 from utils import train_path, test_path, label_path, sample_submission_path
 
-
+def mk_breed_file():
+    """
+    在Data子目录下创建与类别相同的文件夹，以供后续ImageGenerator使用
+    :return: None
+    """
+    label = pd.read_csv(label_path)
+    category = label['breed'].unique()
+    for file in category:
+        os.makedirs(train_path + '\\' + file)
+    print("Done")
+    return None
 

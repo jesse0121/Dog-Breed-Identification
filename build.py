@@ -32,7 +32,7 @@ def write_gap(pre_model, image_size, lambda_func=None):
     base_model = pre_model(include_top=False, weights='imagenet', input_tensor=x)
     model = Model(inputs=base_model.input, outputs=GlobalAveragePooling2D()(base_model.output))
 
-    gen = ImageDataGenerator(samplewise_std_normalization=True)
+    gen = ImageDataGenerator(samplewise_std_normalization=True, rescale=1./255)
 
     train_generator = gen.flow_from_directory(directory=train_path, target_size=image_size,
                                               class_mode='categorical', shuffle=False)
